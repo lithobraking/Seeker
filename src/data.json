@@ -1,0 +1,33 @@
+[
+    {
+        "id": 0,
+        "position": "job title",
+        "company": "company name",
+        "status": "application status",
+        "date": "date applied for job",
+        "contacts": [
+            {
+                "name": "name",
+                "title": "job title",
+                "company": "company",
+                "email": "email address",
+                "phone": "phone number"
+            }
+        ],
+        "link": "link to job post",
+        "milestones": [
+            {
+                "title": "milestone name",
+                "date": "scheduled date of milestone",
+                "details": "milestone details"
+            }
+        ],
+        "offer": {
+            "date": "date received offer",
+            "basePay": 0,
+            "stock": 0,
+            "bonus": 0
+        },
+        "notes": "any additional notes or thoughts"
+    }
+]
