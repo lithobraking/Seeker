@@ -8,7 +8,7 @@ import columns from '../columns.json';
 
 const Homepage = () => {
   return (
-    <div className='d-flex flex-row'>
+    <div className='d-flex flex-row p-2'>
       {columns.map((data) => (
         <Column name={data.name} key={data.index}/>
       ))}
