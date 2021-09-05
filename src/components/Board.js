@@ -5,15 +5,31 @@ import { v4 as uuid } from "uuid";
 import ApplicationCard from "./ApplicationCard";
 
 
-const onDragEnd = () => {
-    return 'did it';
+const onDrop = (result, columns, setColumns) => {
+    if (!result.destination) return;
+
+    const { source, destination } = result;
+    const column = columns[source.droppableId];
+    const newItems = [...column.items];
+
+    const [draggedItem] = newItems.splice(source.index, 1);
+    newItems.splice(destination.index, 0, draggedItem);
+
+    setColumns({
+        ...columns,
+        [source.droppableId]: {
+            ...column,
+            items: newItems
+        }
+    })
 }
 
 const Board = () => {
     const [columns, setColumns] = useState(mockColumns);
+
     return (
         <Container className='d-flex justify-content-center h-100'>
-            <DragDropContext onDragEnd={result => console.log(result)}>
+            <DragDropContext onDragEnd={result => onDrop(result, columns, setColumns)}>
                 {Object.entries(columns).map(([id, column]) => {
                     return (
                         <Droppable droppableId={id} key={id}>
@@ -28,6 +44,7 @@ const Board = () => {
                                             background: snapshot.isDraggingOver ?
                                                 '#dcecfc' : '#e9ecef',
                                             padding: 4,
+                                            minWidth: '40%'
                                         }}>
                                         {column.items.map((item, index) => {
                                             return (
@@ -59,7 +76,7 @@ const Board = () => {
                     )
                 })}
             </DragDropContext>
-            </Container>
+        </Container>
     )
 }
 
@@ -198,5 +215,9 @@ const mockColumns = {
     [uuid()]: {
         name: "Interested",
         items: mockItems
+    },
+    [uuid()]: {
+        name: "Applied",
+        items: []
     }
 }
