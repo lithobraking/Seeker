@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import { Col } from "react-bootstrap";
+import { Col, Container } from "react-bootstrap";
 import { v4 as uuid } from "uuid";
+import ApplicationCard from "./ApplicationCard";
 
 
 const onDragEnd = () => {
@@ -11,15 +12,16 @@ const onDragEnd = () => {
 const Board = () => {
     const [columns, setColumns] = useState(mockColumns);
     return (
-        <div className='d-flex justify-content-center h-100'>
-            <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumns)}>
+        <Container className='d-flex justify-content-center h-100'>
+            <DragDropContext onDragEnd={result => console.log(result)}>
                 {Object.entries(columns).map(([id, column]) => {
                     return (
-                        <Droppable droppableId={id}>
+                        <Droppable droppableId={id} key={id}>
                             {(provided, snapshot) => {
                                 return (
                                     <Col
-                                        className='min-vh-100 w-100 m-3 '
+                                        lg='auto'
+                                        className='min-vh-100 m-3 '
                                         {...provided.droppableProps}
                                         ref={provided.innerRef}
                                         style={{
@@ -27,7 +29,29 @@ const Board = () => {
                                                 '#dcecfc' : '#e9ecef',
                                             padding: 4,
                                         }}>
+                                        {column.items.map((item, index) => {
+                                            return (
+                                                <Draggable key={item.id} draggableId={item.id} index={index}>
+                                                    {(provided, snapshot) => {
+                                                        return (
+                                                            <div
+                                                                className='mx-1 my-2 p-1'
+                                                                ref={provided.innerRef}
+                                                                {...provided.draggableProps}
+                                                                {...provided.dragHandleProps}
+                                                                style={{
+                                                                    userSelect: 'none',
+                                                                    ...provided.draggableProps.style
+                                                                }}>
+                                                                <ApplicationCard data={item} />
+                                                            </div>
+                                                        )
+                                                    }}
 
+                                                </Draggable>
+                                            )
+                                        })}
+                                        {provided.placeholder}
                                     </Col>
                                 )
                             }}
@@ -35,7 +59,7 @@ const Board = () => {
                     )
                 })}
             </DragDropContext>
-        </div>
+            </Container>
     )
 }
 
@@ -173,10 +197,6 @@ const mockItems = [
 const mockColumns = {
     [uuid()]: {
         name: "Interested",
-        items: mockItems
-    },
-    [uuid()]: {
-        name: "Applied",
         items: mockItems
     }
 }

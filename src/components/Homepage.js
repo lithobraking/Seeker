@@ -1,5 +1,3 @@
-import Column from "./Column"
-import columns from '../columns.json';
 import Board from "./Board";
 
 // TODO - 'add new column' button
