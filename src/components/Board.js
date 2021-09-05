@@ -9,19 +9,43 @@ const onDrop = (result, columns, setColumns) => {
     if (!result.destination) return;
 
     const { source, destination } = result;
-    const column = columns[source.droppableId];
-    const newItems = [...column.items];
 
-    const [draggedItem] = newItems.splice(source.index, 1);
-    newItems.splice(destination.index, 0, draggedItem);
+    if (source.droppableId !== destination.droppableId) {
+        const sourceCol = columns[source.droppableId];
+        const destCol = columns[destination.droppableId];
+        const sourceItems = [...sourceCol.items];
+        const destItems = [...destCol.items];
 
-    setColumns({
-        ...columns,
-        [source.droppableId]: {
-            ...column,
-            items: newItems
-        }
-    })
+        const [draggedItem] = sourceItems.splice(source.index, 1);
+        destItems.splice(destination.index, 0, draggedItem);
+
+        setColumns({
+            ...columns,
+            [source.droppableId]: {
+                ...sourceCol,
+                items: sourceItems
+            },
+            [destination.droppableId]: {
+                ...destCol,
+                items: destItems
+            }
+        })
+    } else {
+        const column = columns[source.droppableId];
+        const newItems = [...column.items];
+    
+        const [draggedItem] = newItems.splice(source.index, 1);
+        newItems.splice(destination.index, 0, draggedItem);
+    
+        setColumns({
+            ...columns,
+            [source.droppableId]: {
+                ...column,
+                items: newItems
+            }
+        })
+    }
+
 }
 
 const Board = () => {
@@ -41,7 +65,7 @@ const Board = () => {
                                             padding: 15
                                         }}>
 
-                                            <h3>{column.name}</h3>
+                                        <h3>{column.name}</h3>
 
                                         <Col
                                             lg='auto'
