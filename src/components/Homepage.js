@@ -1,40 +1,20 @@
-import ApplicationCard from './ApplicationCard';
-import applications from '../data.json';
-import { Container, Row, Button, Col } from 'react-bootstrap';
+import { Container } from "react-bootstrap"
+import columns from '../columns.json';
+
+// TODO - column needs to be dynamically rendered component
+// TODO - 'add new item' button
+// TODO - 'add new column' button
+
+import Column from "./Column"
 
 const Homepage = () => {
-    return(
-        <Container className='w-100 d-flex flex-row'>
-        <Col>
-            {
-              applications.map(data => (
-                <ApplicationCard data={data} />
-              ))
-            }
-        </Col>
-        <Col>
-            {
-              applications.map(data => (
-                <ApplicationCard data={data} />
-              ))
-            }
-        </Col>
-        <Col>
-            {
-              applications.map(data => (
-                <ApplicationCard data={data} />
-              ))
-            }
-        </Col>
-        <Col>
-            {
-              applications.map(data => (
-                <ApplicationCard data={data} />
-              ))
-            }
-        </Col>
-      </Container>
-    )
+  return (
+    <div className='d-flex flex-row'>
+      {columns.map((data) => (
+        <Column name={data.name} key={data.index}/>
+      ))}
+      </div>
+  )
 }
 
 export default Homepage

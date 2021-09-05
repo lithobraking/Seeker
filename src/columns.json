@@ -1,0 +1,22 @@
+[
+    {
+        "index": 0,
+        "name": "Interested"
+    },
+    {
+        "index": 1,
+        "name": "Applied"
+    },
+    {
+        "index": 2,
+        "name": "Interviewing"
+    },
+    {
+        "index": 3,
+        "name": "Offer"
+    },
+    {
+        "index": 4,
+        "name": "Not Selected"
+    }
+]

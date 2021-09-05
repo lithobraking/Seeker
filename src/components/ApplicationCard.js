@@ -6,7 +6,6 @@ const ApplicationCard = ({ data }) => {
             <Card.Body>
                 <Card.Title>{data.position}</Card.Title>
                 <Card.Subtitle>{data.company}</Card.Subtitle>
-
             </Card.Body>
         </Card>
     )
