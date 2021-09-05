@@ -1,11 +1,10 @@
 import { Container } from "react-bootstrap"
+import Column from "./Column"
 import columns from '../columns.json';
 
-// TODO - column needs to be dynamically rendered component
 // TODO - 'add new item' button
 // TODO - 'add new column' button
 
-import Column from "./Column"
 
 const Homepage = () => {
   return (

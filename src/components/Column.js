@@ -6,7 +6,7 @@ import { Container, Row, Button, Col } from 'react-bootstrap';
 
 const Column = ({name}) => {
     return (
-            <Col>
+            <Col className='mx-1'>
             <h2>{name}</h2>
                 {
                     applications.map(data => (
