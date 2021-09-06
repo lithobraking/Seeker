@@ -135,6 +135,7 @@ const Board = () => {
                 <NewColumnModal
                     show={modalShow}
                     onHide={() => setModalShow(false)}
+                    columns={mockColumns}
                 />
             </Container >
         </>

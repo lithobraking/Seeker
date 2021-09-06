@@ -1,6 +1,16 @@
+import { useEffect, useState } from "react";
 import { Button, Form, Modal, ModalFooter } from "react-bootstrap"
 
+
+
 const NewColumnModal = (props) => {
+    const [columnName, setColumnName] = useState(''); 
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        console.log(columnName);
+    }
+
     return (
         <Modal
             {...props}
@@ -13,12 +23,18 @@ const NewColumnModal = (props) => {
                 <Form>
                     <Form.Group>
                         <Form.Label>Column Name</Form.Label>
-                        <Form.Control type='text' placeholder='Enter a column name' />
+                        <Form.Control 
+                        type='text' 
+                        placeholder='Enter a column name'
+                        value={columnName}
+                        onChange={(e) => setColumnName(e.target.value)}
+                        />
                     </Form.Group>
                 </Form>
             </Modal.Body>
             <ModalFooter>
-                <Button>Create</Button>
+                <Button 
+                onClick={handleSubmit}>Create</Button>
             </ModalFooter>
         </Modal>
     );
