@@ -91,7 +91,8 @@ const Board = () => {
                                                                     {...provided.dragHandleProps}
                                                                     style={{
                                                                         userSelect: 'none',
-                                                                        ...provided.draggableProps.style
+                                                                        ...provided.draggableProps.style,
+                                                                        opacity: snapshot.isDragging ? '70%' : '100%'
                                                                     }}>
                                                                     <ApplicationCard data={item} />
                                                                 </div>
@@ -121,10 +122,10 @@ export default Board;
 const mockItems = [
     {
         id: uuid(),
-        position: "job title",
-        company: "company name",
+        position: "Full Stack Engineer, Platform Services",
+        company: "Zillow",
         status: "applied",
-        date: "date applied for job",
+        date: "24 Oct 2022",
         contacts: [
             {
                 name: "name",
@@ -152,10 +153,10 @@ const mockItems = [
     },
     {
         id: uuid(),
-        position: "job title",
-        company: "company name",
+        position: "UX Designer",
+        company: "Twitter",
         status: "applied",
-        date: "date applied for job",
+        date: "10 Oct 2022",
         contacts: [
             {
                 name: "name",
@@ -183,10 +184,10 @@ const mockItems = [
     },
     {
         id: uuid(),
-        position: "job title",
-        company: "company name",
+        position: "Front End Developer",
+        company: "Stitch Fix",
         status: "not selected",
-        date: "date applied for job",
+        date: "20 Sep 2022",
         contacts: [
             {
                 name: "name",
@@ -214,10 +215,10 @@ const mockItems = [
     },
     {
         id: uuid(),
-        position: "job title",
-        company: "company name",
+        position: "Back End Software Engineer",
+        company: "Spotify",
         status: "interviewing",
-        date: "date applied for job",
+        date: "26 Sep 2022",
         contacts: [
             {
                 name: "name",

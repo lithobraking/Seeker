@@ -5,14 +5,8 @@ import Board from "./Board";
 
 const Homepage = () => {
   return (
-    <Board/>
+    <Board />
   )
 }
 
 export default Homepage;
-
-/* <div className='d-flex flex-row p-2'>
-{columns.map((data) => (
-  <Column name={data.name} key={data.index} items={data.items}/>
-))}
-</div> */
