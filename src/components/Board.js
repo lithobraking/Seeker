@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { Button, Col, Container } from "react-bootstrap";
 import ApplicationCard from "./ApplicationCard";
@@ -51,10 +51,6 @@ const onDrop = (result, columns, setColumns) => {
 const Board = () => {
     const [columns, setColumns] = useState(mockColumns);
     const [modalShow, setModalShow] = useState(false);
-
-    useEffect(() => {
-
-    })
 
     return (
         <>
@@ -138,7 +134,8 @@ const Board = () => {
                 <NewColumnModal
                     show={modalShow}
                     onHide={() => setModalShow(false)}
-                    columns={mockColumns}
+                    columns={columns}
+                    setColumns={setColumns}
                 />
             </Container >
         </>
