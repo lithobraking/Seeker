@@ -6,7 +6,7 @@ import { Button, Form, Modal, ModalFooter } from "react-bootstrap"
 const NewColumnModal = (props) => {
     const [columnName, setColumnName] = useState(''); 
 
-    const handleSubmit = (e) => {
+    const createNewColumn = (e) => {
         e.preventDefault()
         console.log(columnName);
     }
@@ -20,7 +20,7 @@ const NewColumnModal = (props) => {
                 <Modal.Title id='contained-modal-title-vcenter'>Add Column</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <Form>
+                <Form onSubmit={createNewColumn}>
                     <Form.Group>
                         <Form.Label>Column Name</Form.Label>
                         <Form.Control 
@@ -34,7 +34,7 @@ const NewColumnModal = (props) => {
             </Modal.Body>
             <ModalFooter>
                 <Button 
-                onClick={handleSubmit}>Create</Button>
+                onClick={createNewColumn}>Create</Button>
             </ModalFooter>
         </Modal>
     );
