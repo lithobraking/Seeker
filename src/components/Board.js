@@ -3,6 +3,7 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { Button, Col, Container } from "react-bootstrap";
 import { v4 as uuid } from "uuid";
 import ApplicationCard from "./ApplicationCard";
+import NewColumnModal from "./NewColumnModal";
 
 
 const onDrop = (result, columns, setColumns) => {
@@ -49,90 +50,99 @@ const onDrop = (result, columns, setColumns) => {
 
 const handleClick = (e) => {
     console.log('clicked!')
+
 }
 
 const Board = () => {
     const [columns, setColumns] = useState(mockColumns);
+    const [modalShow, setModalShow] = useState(false);
 
     return (
-        <Container className='d-flex justify-content-center h-100'>
-            <DragDropContext onDragEnd={result => onDrop(result, columns, setColumns)}>
-                {Object.entries(columns).map(([id, column]) => {
-                    return (
-                        <Droppable droppableId={id} key={id}>
-                            {(provided, snapshot) => {
-                                return (
-                                    <div className='w-100 h-100 d-flex flex-column align-items-center'
-                                        style={{
-                                            minWidth: '40%',
-                                            padding: 15
-                                        }}>
+        <>
 
-                                        <h3>{column.name}</h3>
-
-                                        <Col
-                                            lg='auto'
-                                            className='min-vh-100 w-100 m-3 '
-                                            {...provided.droppableProps}
-                                            ref={provided.innerRef}
+            <Container className='d-flex justify-content-center h-100'>
+                <DragDropContext onDragEnd={result => onDrop(result, columns, setColumns)}>
+                    {Object.entries(columns).map(([id, column]) => {
+                        return (
+                            <Droppable droppableId={id} key={id}>
+                                {(provided, snapshot) => {
+                                    return (
+                                        <div className='w-100 h-100 d-flex flex-column align-items-center'
                                             style={{
-                                                background: snapshot.isDraggingOver ?
-                                                    '#dcecfc' : '#e9ecef',
-                                                padding: 4,
-                                                borderRadius: 20
-
+                                                minWidth: '40%',
+                                                padding: 15
                                             }}>
-                                            {column.items.map((item, index) => {
-                                                return (
-                                                    <Draggable key={item.id} draggableId={item.id} index={index}>
-                                                        {(provided, snapshot) => {
-                                                            return (
-                                                                <div
-                                                                    className='mx-1 my-2 p-1'
-                                                                    ref={provided.innerRef}
-                                                                    {...provided.draggableProps}
-                                                                    {...provided.dragHandleProps}
-                                                                    style={{
-                                                                        userSelect: 'none',
-                                                                        ...provided.draggableProps.style,
-                                                                        opacity: snapshot.isDragging ? '70%' : '100%'
-                                                                    }}>
-                                                                    <ApplicationCard data={item} />
-                                                                </div>
-                                                            )
-                                                        }}
 
-                                                    </Draggable>
-                                                )
-                                            })}
-                                            {provided.placeholder}
-                                        </Col>
-                                    </div>
-                                )
-                            }}
+                                            <h3>{column.name}</h3>
 
-                        </Droppable>
-                    )
-                })}
-                <div className='w-100 h-100 d-flex flex-column align-items-center'
-                    style={{
-                        minWidth: '40%',
-                        padding: 15
-                    }}>
-                    <Button
-                        className='w-100 m-3'
-                        variant='outline-primary'
-                        size='lg'
-                        onClick={handleClick}
+                                            <Col
+                                                lg='auto'
+                                                className='min-vh-100 w-100 m-3 '
+                                                {...provided.droppableProps}
+                                                ref={provided.innerRef}
+                                                style={{
+                                                    background: snapshot.isDraggingOver ?
+                                                        '#dcecfc' : '#e9ecef',
+                                                    padding: 4,
+                                                    borderRadius: 20
+
+                                                }}>
+                                                {column.items.map((item, index) => {
+                                                    return (
+                                                        <Draggable key={item.id} draggableId={item.id} index={index}>
+                                                            {(provided, snapshot) => {
+                                                                return (
+                                                                    <div
+                                                                        className='mx-1 my-2 p-1'
+                                                                        ref={provided.innerRef}
+                                                                        {...provided.draggableProps}
+                                                                        {...provided.dragHandleProps}
+                                                                        style={{
+                                                                            userSelect: 'none',
+                                                                            ...provided.draggableProps.style,
+                                                                            opacity: snapshot.isDragging ? '70%' : '100%'
+                                                                        }}>
+                                                                        <ApplicationCard data={item} />
+                                                                    </div>
+                                                                )
+                                                            }}
+
+                                                        </Draggable>
+                                                    )
+                                                })}
+                                                {provided.placeholder}
+                                            </Col>
+                                        </div>
+                                    )
+                                }}
+
+                            </Droppable>
+                        )
+                    })}
+                    <div className='w-100 h-100 d-flex flex-column align-items-center'
                         style={{
-                            padding: 4,
-                            borderRadius: 20,
+                            minWidth: '40%',
+                            padding: 15
                         }}>
-                        <strong><h2><strong>+</strong></h2><h5>Add Column</h5></strong>
-                    </Button>
-                </div>
-            </DragDropContext>
-        </Container >
+                        <Button
+                            className='w-100 m-3'
+                            variant='outline-primary'
+                            size='lg'
+                            onClick={() => setModalShow(true)}
+                            style={{
+                                padding: 4,
+                                borderRadius: 20,
+                            }}>
+                            <strong><h2><strong>+</strong></h2><h5>Add Column</h5></strong>
+                        </Button>
+                    </div>
+                </DragDropContext>
+                            <NewColumnModal
+                            show={modalShow}
+                            onHide={() => setModalShow(false)}
+                            />
+            </Container >
+        </>
     )
 }
 
