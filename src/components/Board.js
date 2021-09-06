@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import { Col, Container } from "react-bootstrap";
+import { Button, Col, Container } from "react-bootstrap";
 import { v4 as uuid } from "uuid";
 import ApplicationCard from "./ApplicationCard";
 
@@ -33,10 +33,10 @@ const onDrop = (result, columns, setColumns) => {
     } else {
         const column = columns[source.droppableId];
         const newItems = [...column.items];
-    
+
         const [draggedItem] = newItems.splice(source.index, 1);
         newItems.splice(destination.index, 0, draggedItem);
-    
+
         setColumns({
             ...columns,
             [source.droppableId]: {
@@ -107,11 +107,26 @@ const Board = () => {
                                     </div>
                                 )
                             }}
+
                         </Droppable>
                     )
                 })}
+                <div className='w-100 h-100 d-flex flex-column align-items-center'
+                    style={{
+                        minWidth: '40%',
+                        padding: 15
+                    }}>
+                    <Button
+                        className='w-100 m-3'
+                        variant='outline-primary'
+                        size='lg'
+                        style={{
+                            padding: 4,
+                            borderRadius: 20,
+                        }}><strong><h2><strong>+</strong></h2><h5>Add Column</h5></strong></Button>
+                </div>
             </DragDropContext>
-        </Container>
+        </Container >
     )
 }
 
