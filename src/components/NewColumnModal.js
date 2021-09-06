@@ -24,7 +24,7 @@ const NewColumnModal = (props) => {
             {...props}
             aria-labelledby='contained-modal-title-vcenter'
         >
-            <Modal.Header closeButton>
+            <Modal.Header>
                 <Modal.Title id='contained-modal-title-vcenter'>Add Column</Modal.Title>
             </Modal.Header>
             <Modal.Body>
@@ -32,6 +32,7 @@ const NewColumnModal = (props) => {
                     <Form.Group>
                         <Form.Label>Column Name</Form.Label>
                         <Form.Control
+                            required
                             type='text'
                             placeholder='Enter a column name'
                             value={columnName}
