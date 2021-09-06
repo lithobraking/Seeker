@@ -4,7 +4,7 @@ import Homepage from './components/Homepage';
 
 const App = () => {
   return (
-    <div>
+    <div className='vh-100 vw-100'>
       <Homepage />
     </div>
   );

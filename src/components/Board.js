@@ -54,33 +54,44 @@ const Board = () => {
 
     return (
         <>
-            <Container className='d-flex justify-content-center h-100'>
+            <div
+                className='d-flex h-100 w-auto'
+                style={{
+                    overflowX: 'auto',
+                    overflowY: 'hidden'
+                }}>
                 <DragDropContext onDragEnd={result => onDrop(result, columns, setColumns)}>
                     {Object.entries(columns).map(([id, column]) => {
                         return (
                             <Droppable droppableId={id} key={id}>
                                 {(provided, snapshot) => {
                                     return (
-                                        <div className='w-100 h-100 d-flex flex-column align-items-center'
+                                        <div className='h-50 d-flex flex-column align-items-center'
                                             style={{
-                                                minWidth: '40%',
+                                                maxWidth: '40%',
+                                                minWidth: '500px',
                                                 padding: 15
                                             }}>
 
-                                            <h3>{column.name}</h3>
 
                                             <Col
                                                 lg='auto'
-                                                className='min-vh-100 w-100 m-3 '
+                                                className='h-100 w-50 m-3'
                                                 {...provided.droppableProps}
                                                 ref={provided.innerRef}
                                                 style={{
                                                     background: snapshot.isDraggingOver ?
                                                         '#dcecfc' : '#e9ecef',
                                                     padding: 4,
-                                                    borderRadius: 20
+                                                    borderRadius: 20,
+                                                    minWidth: '450px',
+                                                    minHeight: '75vh',
+                                                    overflowY: 'auto'
 
                                                 }}>
+                                                <div className='ms-3 mb-2 mt-1'>
+                                                    <h3>{column.name}</h3>
+                                                </div>
                                                 {column.items.map((item, index) => {
                                                     return (
                                                         <Draggable key={item.id} draggableId={item.id} index={index}>
@@ -115,17 +126,18 @@ const Board = () => {
                     })}
                     <div className='w-100 h-100 d-flex flex-column align-items-center'
                         style={{
-                            minWidth: '40%',
+                            maxWidth: '500px',
                             padding: 15
                         }}>
                         <Button
-                            className='w-100 m-3'
+                            className='w-50 m-3'
                             variant='outline-primary'
                             size='lg'
                             onClick={() => setModalShow(true)}
                             style={{
                                 padding: 4,
                                 borderRadius: 20,
+                                minWidth: '450px'
                             }}>
                             <strong><h2><strong>+</strong></h2><h5>Add Column</h5></strong>
                         </Button>
@@ -137,7 +149,7 @@ const Board = () => {
                     columns={columns}
                     setColumns={setColumns}
                 />
-            </Container >
+            </div >
         </>
     )
 }
