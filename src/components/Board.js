@@ -45,7 +45,10 @@ const onDrop = (result, columns, setColumns) => {
             }
         })
     }
+}
 
+const handleClick = (e) => {
+    console.log('clicked!')
 }
 
 const Board = () => {
@@ -120,10 +123,13 @@ const Board = () => {
                         className='w-100 m-3'
                         variant='outline-primary'
                         size='lg'
+                        onClick={handleClick}
                         style={{
                             padding: 4,
                             borderRadius: 20,
-                        }}><strong><h2><strong>+</strong></h2><h5>Add Column</h5></strong></Button>
+                        }}>
+                        <strong><h2><strong>+</strong></h2><h5>Add Column</h5></strong>
+                    </Button>
                 </div>
             </DragDropContext>
         </Container >
