@@ -48,11 +48,6 @@ const onDrop = (result, columns, setColumns) => {
     }
 }
 
-const handleClick = (e) => {
-    console.log('clicked!')
-
-}
-
 const Board = () => {
     const [columns, setColumns] = useState(mockColumns);
     const [modalShow, setModalShow] = useState(false);
