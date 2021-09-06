@@ -42,7 +42,10 @@ const NewColumnModal = (props) => {
             </Modal.Body>
             <ModalFooter>
                 <Button
-                    onClick={createNewColumn}>Create</Button>
+                    onClick={createNewColumn}
+                    disabled={columnName === ''}>
+                        Create
+                    </Button>
             </ModalFooter>
         </Modal>
     );
