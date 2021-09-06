@@ -1,4 +1,4 @@
-import { Form, Modal } from "react-bootstrap"
+import { Button, Form, Modal, ModalFooter } from "react-bootstrap"
 
 const NewColumnModal = (props) => {
     return (
@@ -17,6 +17,9 @@ const NewColumnModal = (props) => {
                     </Form.Group>
                 </Form>
             </Modal.Body>
+            <ModalFooter>
+                <Button>Create</Button>
+            </ModalFooter>
         </Modal>
     );
 }
