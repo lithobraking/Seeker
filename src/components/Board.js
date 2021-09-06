@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { Button, Col, Container } from "react-bootstrap";
 import ApplicationCard from "./ApplicationCard";
 import NewColumnModal from "./NewColumnModal";
-import {mockColumns} from '../mockData';
+import { mockColumns } from '../mockData';
 
 
 const onDrop = (result, columns, setColumns) => {
@@ -52,9 +52,12 @@ const Board = () => {
     const [columns, setColumns] = useState(mockColumns);
     const [modalShow, setModalShow] = useState(false);
 
+    useEffect(() => {
+
+    })
+
     return (
         <>
-
             <Container className='d-flex justify-content-center h-100'>
                 <DragDropContext onDragEnd={result => onDrop(result, columns, setColumns)}>
                     {Object.entries(columns).map(([id, column]) => {

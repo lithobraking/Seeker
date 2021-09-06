@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
-import { Button, Form, Modal, ModalFooter } from "react-bootstrap"
+import { useState } from "react";
+import { Button, CardColumns, Form, Modal, ModalFooter } from "react-bootstrap"
+import { v4 as uuid } from "uuid";
 
 
 
@@ -8,7 +9,13 @@ const NewColumnModal = (props) => {
 
     const createNewColumn = (e) => {
         e.preventDefault()
-        console.log(columnName);
+
+        props.columns[uuid()] = {
+            name: columnName,
+            items: []
+        }
+
+        console.log("column added.");
     }
 
     return (
