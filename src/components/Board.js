@@ -53,6 +53,12 @@ const Board = () => {
     const [columns, setColumns] = useState(mockColumns);
     const [modalShow, setModalShow] = useState(false);
     const [itemModalShow, setItemModalShow] = useState(false);
+    const [currentColumnId, setCurrentColumnId] = useState(''); // allows <NewItemModal/> to receive columnId as prop
+                                                                // without having to live inside <DragDropContext/>
+    const handleNewItemClick = (id) => {
+        setCurrentColumnId(id);
+        setItemModalShow('true');
+    }
 
     return (
         <>
@@ -99,7 +105,7 @@ const Board = () => {
                                                             <Button
                                                                 variant='outline-primary'
                                                                 size='sm'
-                                                                onClick={() => setItemModalShow(true)}
+                                                                onClick={() => handleNewItemClick(id)}
                                                             >Add Item</Button>
                                                         </div>
                                                     </div>
@@ -133,13 +139,6 @@ const Board = () => {
                                     }}
 
                                 </Droppable>
-                                < NewItemModal
-                                    show={itemModalShow}
-                                    onHide={() => setItemModalShow(false)}
-                                    columns={columns}
-                                    setColumns={setColumns}
-                                    parentId={id}
-                                />
                             </>
                         )
                     })}
@@ -168,7 +167,13 @@ const Board = () => {
                     columns={columns}
                     setColumns={setColumns}
                 />
-
+                < NewItemModal
+                    show={itemModalShow}
+                    onHide={() => setItemModalShow(false)}
+                    columns={columns}
+                    setColumns={setColumns}
+                    parentId={currentColumnId}
+                />
             </div >
         </>
     )
