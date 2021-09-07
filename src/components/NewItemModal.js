@@ -84,7 +84,7 @@ const NewItemModal = (props) => {
             <ModalFooter>
                 <Button
                     onClick={createNewItem}
-                    disabled={itemName === ''}>
+                    disabled={itemName === '' || companyName === ''}>
                     Add Item
                 </Button>
             </ModalFooter>
