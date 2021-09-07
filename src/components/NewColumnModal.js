@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { Button, Form, Modal, ModalFooter } from "react-bootstrap"
 import { v4 as uuid } from "uuid";
-// import { mockColumns as columns} from '../mockData';
-
 
 const NewColumnModal = (props) => {
     const [columnName, setColumnName] = useState('');
