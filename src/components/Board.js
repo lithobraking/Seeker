@@ -73,7 +73,6 @@ const Board = () => {
                                                 padding: 15
                                             }}>
 
-
                                             <Col
                                                 lg='auto'
                                                 className='h-100 w-50 m-3'
@@ -89,8 +88,13 @@ const Board = () => {
                                                     overflowY: 'auto'
 
                                                 }}>
-                                                <div className='ms-3 mb-2 mt-1'>
-                                                    <h3>{column.name}</h3>
+                                                <div className='d-flex justify-content-between align-items-center m-3'>
+                                                    <div>
+                                                        <h3>{column.name}</h3>
+                                                    </div>
+                                                    <div>
+                                                        <Button variant='outline-primary' size='sm'>Add Item</Button>
+                                                    </div>
                                                 </div>
                                                 {column.items.map((item, index) => {
                                                     return (
