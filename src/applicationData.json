@@ -1,0 +1,126 @@
+[
+    {
+        "id": 0,
+        "position": "job title",
+        "company": "company name",
+        "status": "applied",
+        "date": "date applied for job",
+        "contacts": [
+            {
+                "name": "name",
+                "title": "job title",
+                "company": "company",
+                "email": "email address",
+                "phone": "phone number"
+            }
+        ],
+        "link": "link to job post",
+        "milestones": [
+            {
+                "title": "milestone name",
+                "date": "scheduled date of milestone",
+                "details": "milestone details"
+            }
+        ],
+        "offer": {
+            "date": "date received offer",
+            "basePay": 0,
+            "stock": 0,
+            "bonus": 0
+        },
+        "notes": "any additional notes or thoughts"
+    },
+    {
+        "id": 1,
+        "position": "job title",
+        "company": "company name",
+        "status": "applied",
+        "date": "date applied for job",
+        "contacts": [
+            {
+                "name": "name",
+                "title": "job title",
+                "company": "company",
+                "email": "email address",
+                "phone": "phone number"
+            }
+        ],
+        "link": "link to job post",
+        "milestones": [
+            {
+                "title": "milestone name",
+                "date": "scheduled date of milestone",
+                "details": "milestone details"
+            }
+        ],
+        "offer": {
+            "date": "date received offer",
+            "basePay": 0,
+            "stock": 0,
+            "bonus": 0
+        },
+        "notes": "any additional notes or thoughts"
+    },
+    {
+        "id": 2,
+        "position": "job title",
+        "company": "company name",
+        "status": "not selected",
+        "date": "date applied for job",
+        "contacts": [
+            {
+                "name": "name",
+                "title": "job title",
+                "company": "company",
+                "email": "email address",
+                "phone": "phone number"
+            }
+        ],
+        "link": "link to job post",
+        "milestones": [
+            {
+                "title": "milestone name",
+                "date": "scheduled date of milestone",
+                "details": "milestone details"
+            }
+        ],
+        "offer": {
+            "date": "date received offer",
+            "basePay": 0,
+            "stock": 0,
+            "bonus": 0
+        },
+        "notes": "any additional notes or thoughts"
+    },
+    {
+        "id": 3,
+        "position": "job title",
+        "company": "company name",
+        "status": "interviewing",
+        "date": "date applied for job",
+        "contacts": [
+            {
+                "name": "name",
+                "title": "job title",
+                "company": "company",
+                "email": "email address",
+                "phone": "phone number"
+            }
+        ],
+        "link": "link to job post",
+        "milestones": [
+            {
+                "title": "milestone name",
+                "date": "scheduled date of milestone",
+                "details": "milestone details"
+            }
+        ],
+        "offer": {
+            "date": "date received offer",
+            "basePay": 0,
+            "stock": 0,
+            "bonus": 0
+        },
+        "notes": "any additional notes or thoughts"
+    }
+]
