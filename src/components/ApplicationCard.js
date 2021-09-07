@@ -1,4 +1,4 @@
-import { Card } from "react-bootstrap"
+import { Card, CloseButton } from "react-bootstrap"
 
 const ApplicationCard = ({ data }) => {
     return (
