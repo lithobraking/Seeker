@@ -4,10 +4,6 @@ import { Card, Dropdown } from "react-bootstrap";
 const ApplicationCard = ({ data, columns, setColumns }) => {
     const deleteSelf = () => {
         console.log('deleteSelf() clicked!');
-        console.log(columns[data.parent].items);
-
-
-
 
     }
 
