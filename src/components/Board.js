@@ -54,10 +54,10 @@ const Board = () => {
     const [modalShow, setModalShow] = useState(false);
     const [itemModalShow, setItemModalShow] = useState(false);
     const [currentColumnId, setCurrentColumnId] = useState(''); // allows <NewItemModal/> to receive columnId as prop
-                                                                // without having to live inside <DragDropContext/>
+    // without having to live inside <DragDropContext/>
     const handleNewItemClick = (id) => {
         setCurrentColumnId(id);
-        setItemModalShow('true');
+        setItemModalShow(true);
     }
 
     return (
@@ -124,7 +124,10 @@ const Board = () => {
                                                                                 ...provided.draggableProps.style,
                                                                                 opacity: snapshot.isDragging ? '70%' : '100%'
                                                                             }}>
-                                                                            <ApplicationCard data={item} />
+                                                                            <ApplicationCard
+                                                                                data={item}
+                                                                                columns={columns}
+                                                                                setColumns={setColumns} />
                                                                         </div>
                                                                     )
                                                                 }}
@@ -180,6 +183,3 @@ const Board = () => {
 }
 
 export default Board;
-
-
-
