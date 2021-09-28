@@ -19,8 +19,8 @@ const onDrop = (result, columns, setColumns) => {
         const destItems = [...destCol.items];
 
         const [draggedItem] = sourceItems.splice(source.index, 1);
+        draggedItem.parent = destination.droppableId;
         destItems.splice(destination.index, 0, draggedItem);
-
         setColumns({
             ...columns,
             [source.droppableId]: {
@@ -54,11 +54,15 @@ const Board = () => {
     const [modalShow, setModalShow] = useState(false);
     const [itemModalShow, setItemModalShow] = useState(false);
     const [currentColumnId, setCurrentColumnId] = useState(''); // allows <NewItemModal/> to receive columnId as prop
-                                                                // without having to live inside <DragDropContext/>
+    // without having to live inside <DragDropContext/>
     const handleNewItemClick = (id) => {
         setCurrentColumnId(id);
-        setItemModalShow('true');
+        setItemModalShow(true);
     }
+
+    // useEffect(() => {
+    //     console.log('useEffect triggered');
+    // }, [columns]);
 
     return (
         <>
@@ -124,7 +128,10 @@ const Board = () => {
                                                                                 ...provided.draggableProps.style,
                                                                                 opacity: snapshot.isDragging ? '70%' : '100%'
                                                                             }}>
-                                                                            <ApplicationCard data={item} />
+                                                                            <ApplicationCard
+                                                                                data={item}
+                                                                                columns={columns}
+                                                                                setColumns={setColumns} />
                                                                         </div>
                                                                     )
                                                                 }}
@@ -180,6 +187,3 @@ const Board = () => {
 }
 
 export default Board;
-
-
-

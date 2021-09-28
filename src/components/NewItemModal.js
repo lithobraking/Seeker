@@ -12,9 +12,10 @@ const NewItemModal = (props) => {
 
         props.columns[props.parentId].items.push({
             id: uuid(),
+            parent: props.parentId,
             position: itemName,
             company: companyName,
-            status: props.columns.name,
+            status: props.columns[props.parentId].name,
             date: format(new Date(), 'd MMM y'),
             contacts: [
                 {
@@ -39,7 +40,7 @@ const NewItemModal = (props) => {
                 stock: 0,
                 bonus: 0
             },
-            notes: "any additional notes or thoughts"
+            notes: ''
         })
 
         props.setColumns(props.columns);
