@@ -19,8 +19,8 @@ const onDrop = (result, columns, setColumns) => {
         const destItems = [...destCol.items];
 
         const [draggedItem] = sourceItems.splice(source.index, 1);
+        draggedItem.parent = destination.droppableId;
         destItems.splice(destination.index, 0, draggedItem);
-
         setColumns({
             ...columns,
             [source.droppableId]: {
@@ -59,6 +59,10 @@ const Board = () => {
         setCurrentColumnId(id);
         setItemModalShow(true);
     }
+
+    // useEffect(() => {
+    //     console.log('useEffect triggered');
+    // }, [columns]);
 
     return (
         <>

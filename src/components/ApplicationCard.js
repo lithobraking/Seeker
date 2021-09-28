@@ -3,8 +3,18 @@ import { Card, Dropdown } from "react-bootstrap";
 
 const ApplicationCard = ({ data, columns, setColumns }) => {
     const deleteSelf = () => {
-        console.log('deleteSelf() clicked!');
+        const column = columns[data.parent];
+        const columnItems = [...column.items];
 
+        const newItems = columnItems.filter((item) => item.id !== data.id);
+
+        setColumns({
+            ...columns,
+            [data.parent]: {
+                name: column.name,
+                items: newItems
+            }
+        })
     }
 
     return (
