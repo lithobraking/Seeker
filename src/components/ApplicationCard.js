@@ -1,8 +1,12 @@
+import { useState } from "react";
 import { Card, Dropdown } from "react-bootstrap";
+import EditItemModal from "./EditItemModal";
 
 
 const ApplicationCard = ({ data, columns, setColumns }) => {
-    const deleteSelf = () => {
+    const [editModalShow, setEditModalShow] = useState(false);
+
+    const handleDelete = () => {
         const column = columns[data.parent];
         const columnItems = [...column.items];
 
@@ -17,11 +21,13 @@ const ApplicationCard = ({ data, columns, setColumns }) => {
         })
     }
 
-    const editSelf = () => {
-        console.log('editSelf() button clicked!');
+    const handleEdit = () => {
+        console.log('handleEdit() button clicked!');
+        setEditModalShow(true);
     }
 
     return (
+        <>
         <Card >
             <Card.Body>
                 <div className='d-flex justify-content-between'>
@@ -33,8 +39,8 @@ const ApplicationCard = ({ data, columns, setColumns }) => {
                             </svg>
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
-                            <Dropdown.Item as='button' onClick={() => editSelf()}>Edit</Dropdown.Item>
-                            <Dropdown.Item as='button' onClick={() => deleteSelf()}>Delete</Dropdown.Item>
+                            <Dropdown.Item as='button' onClick={() => handleEdit()}>Edit</Dropdown.Item>
+                            <Dropdown.Item as='button' onClick={() => handleDelete()}>Delete</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
                 </div>
@@ -42,7 +48,15 @@ const ApplicationCard = ({ data, columns, setColumns }) => {
                 <Card.Subtitle>Applied: {data.date}</Card.Subtitle>
             </Card.Body>
         </Card>
-    )
+        <EditItemModal 
+            id={data.id}
+            currentPosition={data.position}
+            currentCompany={data.company}
+            show={editModalShow}
+            onHide={() => setEditModalShow(false)}
+        />
+        </>
+    );
 }
 
 export default ApplicationCard;

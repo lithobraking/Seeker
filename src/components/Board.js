@@ -169,7 +169,7 @@ const Board = () => {
                     columns={columns}
                     setColumns={setColumns}
                 />
-                < NewItemModal
+                <NewItemModal
                     show={itemModalShow}
                     onHide={() => setItemModalShow(false)}
                     columns={columns}
