@@ -9,7 +9,31 @@ const EditItemModal = (props) => {
 
     const updateItem = (e) => {
         e.preventDefault();
-        console.log('hypothetical item updated!');
+
+        const column = props.columns[props.parent];
+        const columnItems = [...column.items];
+        const target = columnItems.find((item) => item.id === props.id);
+        const updatedItem = JSON.parse(JSON.stringify(target));
+        // console.log(updatedItem);
+        if (itemName.length > 0 && itemName !== target.position) {
+                updatedItem.position = itemName;
+                console.log(`Name has been changed from ${target.position} to ${updatedItem.position}.`);
+            }
+
+            if (companyName.length > 0 && companyName !== target.company) {
+                updatedItem.company = companyName;
+                console.log(`Company has been changed from ${target.company} to ${updatedItem.company}.`);
+            }
+        // props.setColumns({
+        //     ...props.columns,
+        //     [props.data.parent]: {
+        //         name: column.name,
+        //         items: newItems
+        //     }
+        // })
+
+        // const original = 
+
         // props.columns[props.parentId].items.push({
         //     id: uuid(),
         //     parent: props.parentId,
@@ -85,7 +109,7 @@ const EditItemModal = (props) => {
             <ModalFooter>
                 <Button
                     onClick={updateItem}
-                    disabled={itemName === '' || companyName === ''}>
+                    disabled={itemName === '' && companyName === ''}>
                     Update
                 </Button>
             </ModalFooter>

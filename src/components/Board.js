@@ -50,6 +50,7 @@ const onDrop = (result, columns, setColumns) => {
 }
 
 const Board = () => {
+    // TODO - refactor columns into a context to eliminate prop drilling
     const [columns, setColumns] = useState(mockColumns);
     const [modalShow, setModalShow] = useState(false);
     const [itemModalShow, setItemModalShow] = useState(false);

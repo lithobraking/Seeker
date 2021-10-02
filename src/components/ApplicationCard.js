@@ -22,7 +22,7 @@ const ApplicationCard = ({ data, columns, setColumns }) => {
     }
 
     const handleEdit = () => {
-        console.log('handleEdit() button clicked!');
+        console.log("item ID being edited: ", data.id);
         setEditModalShow(true);
     }
 
@@ -49,11 +49,14 @@ const ApplicationCard = ({ data, columns, setColumns }) => {
             </Card.Body>
         </Card>
         <EditItemModal 
+            parent={data.parent}
             id={data.id}
             currentPosition={data.position}
             currentCompany={data.company}
             show={editModalShow}
             onHide={() => setEditModalShow(false)}
+            columns={columns}
+            setColumns={setColumns}
         />
         </>
     );
