@@ -1,7 +1,5 @@
-import { format } from "date-fns";
 import { useState } from "react";
 import { Button, Form, Modal, ModalFooter } from "react-bootstrap"
-import { v4 as uuid } from "uuid";
 
 const EditItemModal = (props) => {
     const [itemName, setItemName] = useState('');
