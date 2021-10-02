@@ -53,16 +53,11 @@ const Board = () => {
     const [columns, setColumns] = useState(mockColumns);
     const [modalShow, setModalShow] = useState(false);
     const [itemModalShow, setItemModalShow] = useState(false);
-    const [currentColumnId, setCurrentColumnId] = useState(''); // allows <NewItemModal/> to receive columnId as prop
-    // without having to live inside <DragDropContext/>
+    const [currentColumnId, setCurrentColumnId] = useState('');
     const handleNewItemClick = (id) => {
         setCurrentColumnId(id);
         setItemModalShow(true);
     }
-
-    // useEffect(() => {
-    //     console.log('useEffect triggered');
-    // }, [columns]);
 
     return (
         <>

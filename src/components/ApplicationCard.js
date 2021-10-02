@@ -17,6 +17,10 @@ const ApplicationCard = ({ data, columns, setColumns }) => {
         })
     }
 
+    const editSelf = () => {
+        console.log('editSelf() button clicked!');
+    }
+
     return (
         <Card >
             <Card.Body>
@@ -29,7 +33,7 @@ const ApplicationCard = ({ data, columns, setColumns }) => {
                             </svg>
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
-                            <Dropdown.Item>Edit</Dropdown.Item>
+                            <Dropdown.Item as='button' onClick={() => editSelf()}>Edit</Dropdown.Item>
                             <Dropdown.Item as='button' onClick={() => deleteSelf()}>Delete</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
