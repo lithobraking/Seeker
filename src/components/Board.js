@@ -50,19 +50,15 @@ const onDrop = (result, columns, setColumns) => {
 }
 
 const Board = () => {
+    // TODO - refactor columns into a context to eliminate prop drilling
     const [columns, setColumns] = useState(mockColumns);
     const [modalShow, setModalShow] = useState(false);
     const [itemModalShow, setItemModalShow] = useState(false);
-    const [currentColumnId, setCurrentColumnId] = useState(''); // allows <NewItemModal/> to receive columnId as prop
-    // without having to live inside <DragDropContext/>
+    const [currentColumnId, setCurrentColumnId] = useState('');
     const handleNewItemClick = (id) => {
         setCurrentColumnId(id);
         setItemModalShow(true);
     }
-
-    // useEffect(() => {
-    //     console.log('useEffect triggered');
-    // }, [columns]);
 
     return (
         <>
@@ -174,7 +170,7 @@ const Board = () => {
                     columns={columns}
                     setColumns={setColumns}
                 />
-                < NewItemModal
+                <NewItemModal
                     show={itemModalShow}
                     onHide={() => setItemModalShow(false)}
                     columns={columns}
