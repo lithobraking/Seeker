@@ -14,78 +14,30 @@ const EditItemModal = (props) => {
         const columnItems = [...column.items];
         const target = columnItems.find((item) => item.id === props.id);
         const updatedItem = JSON.parse(JSON.stringify(target));
-        // console.log(updatedItem);
+
         if (itemName.length > 0 && itemName !== target.position) {
             updatedItem.position = itemName;
-            console.log(`Name has been changed from ${target.position} to ${updatedItem.position}.`);
         }
 
         if (companyName.length > 0 && companyName !== target.company) {
             updatedItem.company = companyName;
-            console.log(`Company has been changed from ${target.company} to ${updatedItem.company}.`);
         }
 
-        console.log(updatedItem.id);
         // add updated object back into columnItems
         if (columnItems.includes(target)) {
-            console.log("target found:");
-            console.log(columnItems.indexOf(target));
-            console.log(columnItems[columnItems.indexOf(target)]);
-
             columnItems[columnItems.indexOf(target)] = updatedItem;
-
-            console.log("target replaced with:");
-            console.log(columnItems.indexOf(updatedItem));
-            console.log(columnItems[columnItems.indexOf(updatedItem)]);
         }
 
-        // props.setColumns({
-        //     ...props.columns,
-        //     [props.parent]: {
-        //         name: column.name,
-        //         items: newItems
-        //     }
-        // })
+        props.setColumns({
+            ...props.columns,
+            [props.parent]: {
+                name: column.name,
+                items: columnItems
+            }
+        });
 
-        // const original = 
-
-        // props.columns[props.parentId].items.push({
-        //     id: uuid(),
-        //     parent: props.parentId,
-        //     position: itemName,
-        //     company: companyName,
-        //     status: props.columns[props.parentId].name,
-        //     date: format(new Date(), 'd MMM y'),
-        //     contacts: [
-        //         {
-        //             name: '',
-        //             title: '',
-        //             company: '',
-        //             email: '',
-        //             phone: ''
-        //         }
-        //     ],
-        //     link: '',
-        //     milestones: [
-        //         {
-        //             title: '',
-        //             date: '',
-        //             details: ''
-        //         }
-        //     ],
-        //     offer: {
-        //         date: '',
-        //         basePay: 0,
-        //         stock: 0,
-        //         bonus: 0
-        //     },
-        //     notes: ''
-        // })
-
-        // props.setColumns(props.columns);
-
-        // setItemName('');
-        // setCompanyName('');
+        setItemName('');
+        setCompanyName('');
         props.onHide();
     }
 
