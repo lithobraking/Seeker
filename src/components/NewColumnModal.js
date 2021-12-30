@@ -12,6 +12,14 @@ const NewColumnModal = (props) => {
             name: columnName,
             items: []
         }
+
+
+        
+        props.columns[uuid()] = {
+            name: columnName,
+            items: []
+        }
+
         props.setColumns(props.columns);
         setColumnName('')
         props.onHide()

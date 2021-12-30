@@ -43,8 +43,42 @@ const NewItemModal = (props) => {
             notes: ''
         })
 
-        props.setColumns(props.columns);
+        const newItem = ({
+            id: uuid(),
+            parent: props.parentId,
+            position: itemName,
+            company: companyName,
+            status: props.columns[props.parentId].name,
+            date: format(new Date(), 'd MMM y'),
+            contacts: [
+                {
+                    name: '',
+                    title: '',
+                    company: '',
+                    email: '',
+                    phone: ''
+                }
+            ],
+            link: '',
+            milestones: [
+                {
+                    title: '',
+                    date: '',
+                    details: ''
+                }
+            ],
+            offer: {
+                date: '',
+                basePay: 0,
+                stock: 0,
+                bonus: 0
+            },
+            notes: ''
+        });
 
+        window.localStorage.setItem('item', JSON.stringify(newItem));
+
+        props.setColumns(props.columns);
         setItemName('');
         setCompanyName('');
         props.onHide();
